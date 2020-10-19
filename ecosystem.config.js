@@ -1,0 +1,25 @@
+module.exports = {
+  apps : [{
+        script: 'index.js',
+        env: {
+          "PORT": 80,
+          "NODE_ENV": "production"
+        },
+    }
+  ],
+
+  deploy : {
+    production : {
+      key  : '/c/Users/5element/.ssh/id_rsa',
+      user : 'root',
+      host : ['51.195.93.181'],
+      ref  : 'origin/master',
+      repo : 'https://github.com/alesikivan/nodeJsApplication.git',
+      path : '/root/test',
+      ssh_options : "StrictHostKeyChecking=no",
+      'pre-deploy-local': '',
+      'post-deploy' : 'npm install && pm2 startOrRestart ecosystem.config.js --env production',
+      'pre-setup': ''
+    }
+  }
+};
