@@ -4,25 +4,32 @@
         <ul id="nav-mobile" class="right hide-on-med-and-down">
 
             <!-- derective if -->
-            {{#if isStates}}
-                <li class="active"><a href="/states">Страны</a></li>
+            {{#if isStatistic}}
+                <li class="active"><a href="/statistic">Статистика</a></li>
             {{else}}
-                <li><a href="/states">Страны</a></li>
+                <li><a href="/statistic">Статистика</a></li>
             {{/if}}
 
-            {{#if isEconomy}}
-                <li class="active"><a href="/economy">Экономика</a></li>
-            {{else}}
-                <li><a href="/economy">Экономика</a></li>
-            {{/if}}
 
             {{#if isAdd}}
-                <li class="active"><a href="/add">Добавить</a></li>
+                <li class="active"><a href="/add">Добавить время</a></li>
             {{else}}
-                <li><a href="/add">Добавить</a></li>
+                <li><a href="/add">Добавить время</a></li>
             {{/if}}
-
-
         </ul>
     </div>
 </nav>
+<div class="additional-links">
+    {{#if isStatistic}}
+        <a class="additional-active" href="/statistic">Статистика</a>
+    {{else}}
+        <a href="/statistic">Статистика</a>
+    {{/if}}
+
+
+    {{#if isAdd}}
+        <a class="additional-active" href="/add">Добавить время</a>
+    {{else}}
+        <a href="/add">Добавить время</a>
+    {{/if}}
+</div>

@@ -1,1 +1,19 @@
-<h3>Главная</h3>
+<h4>Time Manager:</h4>
+{{#if times.length}}
+    {{#each times}}
+        <div class="col s12 m6 main-time">
+            <div class="card blue-grey darken-1">
+                <div class="card-content white-text">
+                    <span class="card-title">{{developer}}</span>
+                    <p><b>Потраченное время:</b> {{hours}} часов {{hours}} минут </p>
+                    <p><b>Дата создания:</b> {{date_create}}</p>
+                </div>
+                <div class="card-action">
+                    <p class="view remove-time" data-id="{{_id}}">Удалить!</p>
+                </div>
+            </div>
+        </div>
+    {{/each}}
+{{else}}
+    <b> Записи пока отсутвуют :(</b>
+{{/if}}

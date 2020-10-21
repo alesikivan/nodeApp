@@ -1,8 +1,151 @@
 .nav-wrapper{
-    background-color: #6cc1f2;
+    background-color: #656565;
     padding: 0 30px;
+}
+
+.blue-grey.darken-1 {
+    background-color: #656565bf !important;
 }
 
 a.view{
     margin: 0;
+}
+
+.btn{
+    transition: 0.2s;
+    background-color: #666 !important;
+}
+
+.btn:hover{
+    opacity: 0.8;
+}
+
+select {
+    display: block;
+}
+
+/* ERRORS SHOWING BEGIN*/
+.error-block{
+    display: flex;
+    align-items: center;
+}
+
+.circle-error{
+    height: 7px;
+    width: 7px;
+    border-radius: 50%;
+    background-color: #e54949;
+    margin-right: 6px;
+}
+
+.errors-list p{
+    color: #e54949 !important;
+}
+/* ERRORS SHOWING END*/
+
+.card-action{
+    display: flex;
+    align-items: flex-start;
+}
+
+.card-action p{
+    margin: 0;
+    padding: 3px 5px;
+    border: 2px solid #f3f3f3;
+    color: #f3f3f3;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.card-action p:hover{
+    background-color: #7b8387;
+}
+
+
+/* NAVBAR BEGIN */
+.additional-links{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    display: none;
+}
+
+.additional-links a{
+    width: 50%;
+    min-height: 50px;
+    background-color: #7d7d7d;
+    color: #f2f2f2;
+    font-size: 1.2em;
+    transition: 0.2s;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.additional-links a:hover{
+    background-color: #6d6d6d;
+}
+
+.additional-active{
+    background-color: #666 !important;
+}
+
+/* NAVBAR END */
+
+
+/* STATISTIC BEGIN */
+.times{
+    display: flex;
+    align-items: center;
+}
+.developer{
+    min-height: 200px;
+    width: 50%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.developer p{
+    margin: 0 0 10px 0;
+    font-size: 3.5em;
+    font-weight: bold;
+}
+.developer span{
+    font-size: 1.5em;
+    /* font-weight: bold; */
+    font-family: monospace;
+}
+/* STATISTIC END */
+
+
+@media (max-width: 600px) {
+    .developer p{
+        font-size: 2.5em;
+    }
+    .developer span{
+        font-size: 1em;
+    }
+}
+
+
+@media (max-width: 400px) {
+    .developer p{
+        font-size: 2em;
+    }
+    .developer span{
+        font-size: 0.8em;
+    }
+}
+
+@media (max-width: 1000px) {
+    .additional-links{
+        display: flex;
+    }
 }

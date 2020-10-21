@@ -9,7 +9,7 @@ const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-acce
 // routes
 const homeRoutes = require('./routes/index');
 const economyRoutes = require('./routes/economy');
-const statesRoutes = require('./routes/states');
+const statisticRoutes = require('./routes/statistic');
 const addRoutes = require('./routes/add');
 
 // create server
@@ -41,7 +41,7 @@ app.use(express.urlencoded({ extended : true }));
 
 // data treatment
 app.use('/', homeRoutes);
-app.use('/states', statesRoutes);
+app.use('/statistic', statisticRoutes);
 app.use('/add', addRoutes);
 app.use('/economy', economyRoutes);
 

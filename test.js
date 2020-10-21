@@ -1,15 +1,12 @@
 
-function test(r){
-    var { myObj1: arr, myObj1:ideal} = r;
-    console.log(arr);
+var a = 35;
+var b = 178;
+
+
+function getTrueTime(h, m){
+    console.log(h);
+    console.log((m / 60).toFixed(0));
+    return h + +(m / 60).toFixed(0);
 }
 
-var myObj1 = {
-    name: 1
-}
-
-var myObj2 = {
-    name: 2
-}
-
-test( {myObj1, myObj2} )
+console.log(getTrueTime(a, b))

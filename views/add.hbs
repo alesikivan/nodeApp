@@ -1,18 +1,32 @@
-<h3>Добавьте описание экономики страны!</h3>
+<h3>Добавить время работы!</h3>
 
-<form method="post">
-    <div class="input-field">
-        <label for="state"></label>
-        <input placeholder="Введите страну" name="state" id="state" type="text" class="validate" required>
-        <span class="helper-text" data-error="Введите название страны"></span>
+{{#if errors}}
+    <div class="errors-list">
+            {{#each errors}}
+                <div class="error-block">
+                    <div class="circle-error"></div>
+                    <p>{{msg}}</p>
+                </div>
+            {{/each}}
+    </div>
+{{/if}}
+
+<form method="post" novalidate>
+
+    <label for="hours">hours</label>
+    <input type="number" name="hours" value="8" id="hours">
+
+    <label for="minutes">minutes</label>
+    <input type="number" name="minutes" value="0" id="minutes">
+
+    <div class="input-field col s12">
+        <select name="developer">
+          <option value="" disabled selected>- Автор - </option>
+          <option value="Alesik Ivan">Alesik Ivan</option>
+          <option value="Yaroslav Morsikov">Yaroslav Morsikov</option>
+        </select>
     </div>
 
-    <div class="input-field">
-        <label for="description">Описание</label>
-        <input placeholder="Введите описание экономики" id="description" name="description" type="text" class="validate" required>
-        <span class="helper-text" data-error="Enter rating"></span>
-    </div>
-
-    <button type="submit" class="btn btn-primary">Опубликовать!</button>
+    <button type="submit" class="btn btn-primary">Добавить!</button>
 
 </form>
