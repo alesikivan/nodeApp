@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
     }
 
     function getTrueTime(h, m){
-        return h + +(m / 60).toFixed(0);
+        return h + +Math.floor(m / 60);
     }
 
     const ivan = await Time.find({
