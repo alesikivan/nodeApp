@@ -99,12 +99,14 @@ select {
 
 /* STATISTIC BEGIN */
 .times{
+    margin-top: 50px;
     display: flex;
     align-items: center;
+    justify-content: space-around;
 }
 .developer{
     min-height: 200px;
-    width: 50%;
+    width: 30%;
 
     display: flex;
     flex-direction: column;
@@ -121,6 +123,28 @@ select {
     font-size: 1.5em;
     /* font-weight: bold; */
     font-family: monospace;
+}
+.statistic{
+    margin-top: 10px;
+    border-top: 2px solid #ccc;
+    padding-top: 10px;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.statistic span {
+    margin: 5px 0;
+}
+
+.notEnough{
+    color: #f24444;
+}
+
+.enough{
+    color: #27c027;
 }
 /* STATISTIC END */
 
