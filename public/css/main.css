@@ -11,9 +11,12 @@ a.view{
     margin: 0;
 }
 
-.btn{
+button.btn{
+    margin: 10px auto !important;
     transition: 0.2s;
+    border-radius: 15px;
     background-color: #666 !important;
+    width: 300px;
 }
 
 .btn:hover{
@@ -28,6 +31,7 @@ select {
 .error-block{
     display: flex;
     align-items: center;
+    justify-content: center
 }
 
 .circle-error{
@@ -61,6 +65,36 @@ select {
 .card-action p:hover{
     background-color: #7b8387;
 }
+
+/* AUTHOR BEGIN */
+.authors{
+    width: 90%;
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+}
+.author-block{
+    border: 2px solid #ccc;
+    color: #666;
+    border-radius: 6px;
+    width: 46%;
+    margin: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.author-block p{
+    user-select: none;
+}
+.author-block-active{
+    background-color: #d4ffcc;
+    border-color: #40de78;
+}
+/* AUTHOR END */
 
 
 /* NAVBAR BEGIN */
@@ -149,6 +183,79 @@ select {
 /* STATISTIC END */
 
 
+/* ADDING PAGE STYLES BEGIN */
+.time-adding{
+    text-align: center;
+}
+.time-form{
+    display: flex;
+    flex-direction: column;
+}
+.time-block{
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+}
+.time span{
+    height: 70px;
+    font-size: 3.0em;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    align-self: flex-start;
+}
+
+.time, .timer{
+    width: 400px;
+    margin: 0 auto;
+    /* border: 1px solid red; */
+}
+.time{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.time-form input{
+    width: 70px !important;
+    height: 70px !important;
+    font-size: 3.0em !important;
+    font-weight: bold;
+    text-align: center;
+}
+.timer{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.timer-block{
+    margin: 6px;
+    height: 70px;
+    width: 70px;
+    border: 2px solid #ccc;
+    border-radius: 15px;
+    color: #666;
+    cursor: pointer;
+    transition: 0.2s;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.timer-block:hover{
+    background-color: #f3f3f3;
+}
+.timer-block p{
+    margin: 0;
+    font-weight: bold;
+}
+.timer-block-minutes{
+    border-radius: 50%;
+}
+/* ADDING PAGE STYLES END */
+
 @media (max-width: 600px) {
     .developer p{
         font-size: 2.5em;
@@ -158,6 +265,28 @@ select {
     }
 }
 
+@media (max-width: 500px) {
+    .timer-block {
+        margin: 3px;
+        height: 50px;
+        width: 50px;
+    }
+    .time, .timer {
+        width: 250px;
+    }
+    .authors{
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+    }
+    .author-block{
+        width: 90%;
+    }
+    button.btn{
+        width: 200px;
+    }
+}
 
 @media (max-width: 400px) {
     .developer p{

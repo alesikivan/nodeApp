@@ -1,4 +1,4 @@
-<h3>Добавить время работы!</h3>
+<h3 class="time-adding">Добавить время работы!</h3>
 
 {{#if errors}}
     <div class="errors-list">
@@ -11,21 +11,44 @@
     </div>
 {{/if}}
 
-<form method="post" novalidate>
+<form method="post" class="time-form" novalidate>
 
-    <label for="hours">hours</label>
-    <input type="number" name="hours" value="8" id="hours">
-
-    <label for="minutes">minutes</label>
-    <input type="number" name="minutes" value="0" id="minutes">
-
-    <div class="input-field col s12">
-        <select name="developer">
-          <option value="" disabled selected>- Автор - </option>
-          <option value="Alesik Ivan">Alesik Ivan</option>
-          <option value="Yaroslav Morsikov">Yaroslav Morsikov</option>
-        </select>
+    <div class="time">
+        <div class="time-block">
+            <label for="hours">hours</label>
+            <input class="time-input" type="text" name="hours" value="8" id="hours">
+        </div>
+        <span>:</span>
+        <div class="time-block">
+            <label for="minutes">minutes</label>
+            <input class="time-input" type="text" name="minutes" value="0" id="minutes">
+        </div>
     </div>
+    <div class="timer">
+        {{#each hours}}
+            <div class="timer-block timer-block-hours" data-hours="{{this}}">
+                <p>{{this}}h</p>
+            </div>
+        {{/each}}
+    </div>
+
+    <div class="timer">
+        {{#each minutes}}
+            <div class="timer-block timer-block-minutes" data-minutes="{{this}}">
+                <p>{{this}}m</p>
+            </div>
+        {{/each}}
+    </div>
+
+    <div class="authors">
+        {{#each developers}}
+            <div class="author-block" data-author="{{this}}" data-active="0">
+                <p>{{this}}</p>
+            </div>
+        {{/each}}
+    </div>
+
+    <input type="hidden" name="developer" value="" id="developer">
 
     <button type="submit" class="btn btn-primary">Добавить!</button>
 

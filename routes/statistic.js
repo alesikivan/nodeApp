@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
     const week = (month/4).toFixed(0);
 
     var curr = new Date; // get current date
-    var first = curr.getDate() - curr.getDay() + 1; // First day is the day of the month - the day of the week
+    var first = curr.getDate() - curr.getDay(); // First day is the day of the month - the day of the week
     var last = first + 6; // last day is the first day + 6
 
     var firstDayOfWeek = new Date(curr.setDate(first)).toUTCString();
@@ -46,6 +46,21 @@ router.get('/', async (req, res) => {
         developer : "Yaroslav Morsikov"
     });
 
+    var start = new Date();
+    start.setHours(0,0,0,0);
+
+    const today = start.toUTCString()
+
+    const ivanToday = await Time.find({
+        date_create : { $gte: today },
+        developer : "Alesik Ivan"
+    });
+
+    const yaraToday = await Time.find({
+        date_create : { $gte: today },
+        developer : "Yaroslav Morsikov"
+    });
+
     const ivanWeek = await Time.find({
         date_create : { $gte: firstDayOfWeek, $lte: lastDayOfWeek },
         developer : "Alesik Ivan"
@@ -74,7 +89,9 @@ router.get('/', async (req, res) => {
         isEnoughForIvan : notEnough( getTrueTime(hoursSum(ivanWeek, "hours"), hoursSum(ivanWeek, "minutes")), week  ),
         enoughForIvan : enough( getTrueTime(hoursSum(ivanWeek, "hours"), hoursSum(ivanWeek, "minutes")), week  ),
         isEnoughForYara : notEnough( getTrueTime(hoursSum(yaraWeek, "hours"), hoursSum(yaraWeek, "minutes")), week  ),
-        enoughForYara : enough( getTrueTime(hoursSum(yaraWeek, "hours"), hoursSum(yaraWeek, "minutes")), week  )
+        enoughForYara : enough( getTrueTime(hoursSum(yaraWeek, "hours"), hoursSum(yaraWeek, "minutes")), week  ),
+        ivanToday : getTrueTime(hoursSum(ivanToday, "hours"), hoursSum(ivanToday, "minutes")),
+        yaraToday : getTrueTime(hoursSum(yaraToday, "hours"), hoursSum(yaraToday, "minutes"))
     });
 });
 

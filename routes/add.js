@@ -8,7 +8,10 @@ const {check, validationResult} = require('express-validator');
 router.get('/', (req, res) => {
     res.render('add', {
         pageTitle : "Добавить",
-        isAdd : true
+        isAdd : true,
+        hours : [1, 2, 3, 4, 5, 6, 7, 8],
+        minutes : [15, 20, 30, 45],
+        developers : ["Alesik Ivan", "Yaroslav Morsikov"]
     })
 });
 
@@ -45,7 +48,12 @@ router.post(
     if(!errors.isEmpty())
     {
         console.log(errors.array());
-        res.render( 'add', {errors: errors.array()} );
+        res.render( 'add', {
+            errors: errors.array(),
+            hours : [1, 2, 3, 4, 5, 6, 7, 8],
+            minutes : [15, 20, 30, 45],
+            developers : ["Alesik Ivan", "Yaroslav Morsikov"]
+        } );
     }else{
 
         // data in model writing
