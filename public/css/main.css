@@ -256,6 +256,14 @@ select {
 }
 /* ADDING PAGE STYLES END */
 
+
+/* AUTH BEGIN */
+.auth{
+    margin-top: 20px;
+}
+/* AUTH END */
+
+
 @media (max-width: 600px) {
     .developer p{
         font-size: 2.5em;

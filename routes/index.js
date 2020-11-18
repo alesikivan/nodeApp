@@ -5,7 +5,10 @@ const Time = require('../models/time')
 
 router.get('/', async (req, res) => {
 
+// const times = await Time.find().populate("userId", 'email, name').select("developer");
 const times = await Time.find();
+
+    // console.log(times)
 
     res.render('index', {
         pageTitle : "Главная",

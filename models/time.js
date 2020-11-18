@@ -18,6 +18,10 @@ const time = new Schema({
     date_create : {
         type : Date,
         required : true
+    },
+    userId: {
+        type : Schema.Types.ObjectId,
+        ref : 'User'
     }
 });
 

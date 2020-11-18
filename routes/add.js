@@ -61,10 +61,9 @@ router.post(
             hours : req.body.hours,
             minutes : req.body.minutes,
             developer : req.body.developer,
-            date_create : new Date()
+            date_create : new Date(),
+            userId : req.user._id
         });
-
-        console.log(time);
 
         try {
             await time.save();

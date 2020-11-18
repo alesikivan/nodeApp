@@ -1,12 +1,14 @@
+var path = require('path');
+const Time = require(path.join(__dirname, 'models', 'time.js'));
 
-var a = 35;
-var b = 178;
-
-
-function getTrueTime(h, m){
-    console.log(h);
-    console.log((m / 60).toFixed(0));
-    return h + +(m / 60).toFixed(0);
+class DeveloperData {
+    constructor(name) {
+        this.name = name
+    }
 }
-
-console.log(getTrueTime(a, b))
+// console.log(path.join(__dirname, 'models', 'time.js'))
+var all = Time.find({
+    developer : "Alesik Ivan"
+});
+var user = new DeveloperData("Alesik Ivan")
+console.log(all)

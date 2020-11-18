@@ -2,14 +2,19 @@ const {Router} = require('express');
 const router = Router();
 const Time = require('../models/time');
 
-
 router.get('/', async (req, res) => {
 
     // time
     const month = 170;
+    const time = {
+        month : month,
+        week : ( month / 4 ).toFixed(0),
+        firstDayOfWeek : new Date((new Date).setDate((new Date).getDate() - (new Date).getDay())).toUTCString(),
+        lastDayOfWeek : new Date((new Date).setDate((new Date).getDate() - (new Date).getDay() + 6)).toUTCString()
+    }
     const week = (month/4).toFixed(0);
 
-    var curr = new Date; // get current date
+    var curr = (new Date); // get current date
     var first = curr.getDate() - curr.getDay(); // First day is the day of the month - the day of the week
     var last = first + 6; // last day is the first day + 6
 
@@ -22,6 +27,7 @@ router.get('/', async (req, res) => {
     var lastDayOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0);
 
 
+
     function hoursSum(obj, prop)
     {
         var s = 0;
@@ -32,9 +38,29 @@ router.get('/', async (req, res) => {
         return s;
     }
 
+
     function getTrueTime(h, m){
         return h + +Math.floor(m / 60);
     }
+
+    async function getMonth(dev)
+    {
+        return await Time.find({
+            date_create : { $gte: firstDayOfMonth, $lte: lastDayOfMonth },
+            developer : dev
+        });
+    }
+
+    class DeveloperData {
+        constructor(name) {
+            this.name = name,
+            this.month = getMonth(name)
+        }
+    };
+    const developers = [
+        JSON.stringify(new DeveloperData("Alesik Ivan")),
+        JSON.stringify(new DeveloperData("Yaroslav Morsikov"))
+    ]
 
     const ivan = await Time.find({
         date_create : { $gte: firstDayOfMonth, $lte: lastDayOfMonth },
@@ -85,13 +111,16 @@ router.get('/', async (req, res) => {
         yara : getTrueTime(hoursSum(yara, "hours"), hoursSum(yara, "minutes")),
         ivanW : getTrueTime(hoursSum(ivanWeek, "hours"), hoursSum(ivanWeek, "minutes")),
         yaraW : getTrueTime(hoursSum(yaraWeek, "hours"), hoursSum(yaraWeek, "minutes")),
-        month, week,
+        month : time.month,
+        week : time.week,
         isEnoughForIvan : notEnough( getTrueTime(hoursSum(ivanWeek, "hours"), hoursSum(ivanWeek, "minutes")), week  ),
         enoughForIvan : enough( getTrueTime(hoursSum(ivanWeek, "hours"), hoursSum(ivanWeek, "minutes")), week  ),
         isEnoughForYara : notEnough( getTrueTime(hoursSum(yaraWeek, "hours"), hoursSum(yaraWeek, "minutes")), week  ),
         enoughForYara : enough( getTrueTime(hoursSum(yaraWeek, "hours"), hoursSum(yaraWeek, "minutes")), week  ),
         ivanToday : getTrueTime(hoursSum(ivanToday, "hours"), hoursSum(ivanToday, "minutes")),
-        yaraToday : getTrueTime(hoursSum(yaraToday, "hours"), hoursSum(yaraToday, "minutes"))
+        yaraToday : getTrueTime(hoursSum(yaraToday, "hours"), hoursSum(yaraToday, "minutes")),
+        time : JSON.stringify(time),
+        users : (developers)
     });
 });
 

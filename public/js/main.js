@@ -78,3 +78,5 @@ function clear(element)
             $(item).removeClass("author-block-active").attr("data-active", "0");
     } )
 }
+
+M.Tabs.init(document.querySelectorAll('.tabs'))
