@@ -14,7 +14,7 @@ module.exports = {
       host : ['46.17.104.21'],
       ref  : 'origin/master',
       repo : 'https://github.com/alesikivan/nodeApp.git',
-      path : '/root',
+      path : '/root/app',
       ssh_options : "StrictHostKeyChecking=no",
       'pre-deploy-local': '',
       'post-deploy' : 'npm install && pm2 startOrRestart ecosystem.config.js --env production',
